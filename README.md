@@ -56,13 +56,6 @@ Main runtime dependencies from `package.json`:
 - `mapbox-gl` `^3.23.0`
 - `web-vitals` `^2.1.4`
 
-Testing dependencies:
-
-- `@testing-library/react` `^16.3.2`
-- `@testing-library/jest-dom` `^6.9.1`
-- `@testing-library/dom` `^10.4.1`
-- `@testing-library/user-event` `^13.5.0`
-
 ## Example Usage
 
 1. Start the app with `npm start`.
