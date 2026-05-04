@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# NYC Restaurant Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React + Mapbox web app for exploring New York City restaurant inspection data from NYC Open Data.
 
-## Available Scripts
+The app:
+- fetches restaurant inspection records from the NYC Open Data API
+- shows restaurants on an interactive map
+- lets you filter by borough, cuisine, grade, and minimum inspection score
+- shows a detail panel when you click a restaurant marker
 
-In the project directory, you can run:
+## How to Run the Project
 
-### `npm start`
+### 1. Install dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Add your Mapbox token
 
-### `npm test`
+Create a `.env` file in the project root and add:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+REACT_APP_MAPBOX_TOKEN=your_mapbox_access_token_here
+```
 
-### `npm run build`
+This project reads the token from `src/config.js`, so the `REACT_APP_MAPBOX_TOKEN` environment variable must be set before starting the app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. Start the development server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then open:
 
-### `npm run eject`
+```text
+http://localhost:3000
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 4. Create a production build
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Dependencies
 
-## Learn More
+Main runtime dependencies from `package.json`:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `react` `^19.2.5`
+- `react-dom` `^19.2.5`
+- `react-scripts` `5.0.1`
+- `axios` `^1.16.0`
+- `mapbox-gl` `^3.23.0`
+- `web-vitals` `^2.1.4`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Testing dependencies:
 
-### Code Splitting
+- `@testing-library/react` `^16.3.2`
+- `@testing-library/jest-dom` `^6.9.1`
+- `@testing-library/dom` `^10.4.1`
+- `@testing-library/user-event` `^13.5.0`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Example Usage
 
-### Analyzing the Bundle Size
+1. Start the app with `npm start`.
+2. The map loads with `Manhattan` selected by default in the borough filters.
+3. Click one or more borough pills such as `Brooklyn` or `Queens` to expand the results.
+4. Choose a cuisine from the dropdown, such as `Italian`.
+5. Optionally filter by inspection grade like `A` or `B`.
+6. Enter a minimum inspection score to narrow the dataset further.
+7. Click a restaurant marker on the map to open its detail panel.
+8. Review the restaurant’s address, phone, cuisine, inspection date, score, and related inspection details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Structure
 
-### Making a Progressive Web App
+```text
+src/
+  App.js
+  App.css
+  config.js
+  components/
+    Filters.js
+    MapView.js
+    RestaurantPanel.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Data Source
 
-### Advanced Configuration
+NYC Open Data restaurant inspection dataset:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data`
